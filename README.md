@@ -3,7 +3,9 @@ Servidor REST en symfony
 
 
 # con Docker
-Renombrar el archivo .docker/.env.dev a .docker/.env
+Se puede crear una configuracion propia para el docker renombrando el archivo .docker/.env.dev a .docker/.env, 
+en caso contrario se usara la configuracion del archivo .docker/.env.dev
+
 Ejecutar: 
     make create-docker
 

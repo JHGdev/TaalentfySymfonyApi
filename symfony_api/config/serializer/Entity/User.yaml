@@ -1,0 +1,24 @@
+App\Entity\User:
+  attributes:
+    id:
+      groups: ['user']
+    email:
+      groups: ['user', 'misc']
+    firstname:
+      groups: ['user', 'misc']
+    lastname:
+      groups: ['user', 'misc']
+    birth_date:
+      groups: ['user', 'misc']
+    created:
+      groups: ['user']
+    knowledgeAssignments:
+      groups: ['user']
+    yes:
+      groups: ['user']
+    userAnswersTestA:
+      groups: ['user']
+    userAnswersTestB:
+      groups: ['user']
+
+    

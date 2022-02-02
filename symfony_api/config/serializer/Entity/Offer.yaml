@@ -1,0 +1,21 @@
+App\Entity\Offer:
+  attributes:
+    id:
+      groups: ['offer', 'misc']
+    title:
+      groups: ['offer', 'misc']
+    description:
+      groups: ['offer', 'misc']
+    status:
+      groups: ['offer']
+    incorporation_date:
+      groups: ['offer', 'misc']
+    knowledgeOfferAssignments:
+      groups: ['offer']
+    laboralSectorOfferAssignments:
+      groups: ['offer']
+    OfferCriteriaTestA:
+      groups: ['offer']
+    OfferCriteriaTestB:
+      groups: ['offer']
+    

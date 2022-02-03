@@ -6,3 +6,6 @@ endif
 
 install:
 	$(MAKE) -C symfony_api all
+
+create-test:
+	$(MAKE) -C symfony_api/test/ all

@@ -93,11 +93,11 @@ class OfferController extends AbstractFOSRestController{
             return $this->sendResponse(400, null, 'Offer already exists');
 
 
-
-        $knowledge = $form['knowledge'];
-        $laboral_sector = $form['laboral_sector'];
-        $test_a_criteria = $form['test_a_criteria'];
-        $test_b_criteria = $form['test_b_criteria'];
+        $knowledge       = isset($form['knowledge'])       ? $form['knowledge'] : null;
+        $laboral_sector  = isset($form['laboral_sector'])  ? $form['laboral_sector'] : null;
+        $test_a_criteria = isset($form['test_a_criteria']) ? $form['test_a_criteria'] : null;
+        $test_b_criteria = isset($form['test_b_criteria']) ? $form['test_b_criteria'] : null;
+    
         
         $offer = new Offer;
         $form = $this->createForm(OfferFormType::class, $offer);

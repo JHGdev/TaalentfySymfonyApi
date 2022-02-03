@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "0cffa032-540c-43b2-a04f-b144850c43be",
+		"name": "Taaletfy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Api",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Users list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_form\": {\n        \"email\":\"jose@nomail.com\",\n        \"firstname\":\"Jose\",\n        \"lastname\":\"Hervas\",\n        \"birth_date\": \"406771200\",\n        \"laboral_sector\":\"Sector 2\",\n        \"knowledge\":[\"Habilidad\",\"Conocimiento\",\"Pericia\"],\n        \"user_answers_test_a\": 70,\n        \"user_answers_test_b\": [10, 40, 50]\n    }\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Offers",
+					"item": [
+						{
+							"name": "Offers list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/offers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"offers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Offer Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"offer_form\": {\n        \"title\":\"Oferta 1\",\n        \"description\":\"eoeoeoeo\",\n        \"status\": 1,\n        \"incorporation_date\": 406771200,\n        \"laboral_sector\":\"Sector 3\",\n        \"knowledge\":[\"Habilidad\",\"Conocimiento\",\"Pericia\"],\n        \"test_a_criteria\": 50,\n        \"test_b_criteria\": [30, 34, 36]\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/offers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"offers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MISC",
+					"item": [
+						{
+							"name": "Upload",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"users\":[\n        {\n            \"email\":\"prueba2\",\n            \"firstname\":\"Jose\",\n            \"lastname\":\"Hervas\",\n            \"birth_date\": \"406771200\",\n            \"laboral_sector\":\"Sector 3\",\n            \"knowledge\":[\"Habilidad\",\"Conocimiento\",\"Pericia\"],\n            \"user_answers_test_a\": 70,\n            \"user_answers_test_b\": [10, 40, 50]\n        },\n        {\n            \"email\":\"prueba2@nomail.com\",\n            \"firstname\":\"Jose\",\n            \"lastname\":\"Hervas\",\n            \"birth_date\": \"406771200\",\n            \"laboral_sector\":\"Sector 32\",\n            \"knowledge\":[\"Habilidad\",\"Conocimiento\",\"Pericia\"],\n            \"user_answers_test_a\": 70,\n            \"user_answers_test_b\": [10, 40, 50]\n        }\n    ],\n    \"offers\": [\n       {\n        \"title\":\"Oferta 1\",\n        \"description\":\"eoeoeoeo\",\n        \"status\": 1,\n        \"incorporation_date\": 406771200,\n        \"laboral_sector\":\"Sector 3\",\n        \"knowledge\":[\"Habilidad\",\"Conocimiento\",\"Pericia\"],\n        \"test_a_criteria\": 50,\n        \"test_b_criteria\": [30, 34, 36]\n        },\n        {\n        \"title\":\"Oferta 2\",\n        \"description\":\"2eoeoeoeo\",\n        \"status\": 1,\n        \"incorporation_date\": 406771200,\n        \"laboral_sector\":\"Sector 32\",\n        \"knowledge\":[\"Habilidad\",\"Conocimiento\",\"Pericia\"],\n        \"test_a_criteria\": 50,\n        \"test_b_criteria\": [30, 34, 36]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/misc/upload",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"misc",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Recomendations",
+					"item": [
+						{
+							"name": "Get user Offers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"prueba2@nomail.com\",\n    \"n_offers\":10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/misc/get_user_offers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"misc",
+										"get_user_offers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Offer Users",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"Oferta 1\",\n    \"n_users\":10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/misc/get_offer_users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"misc",
+										"get_offer_users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get M Users N Offers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"users\":[\n        \"prueba2@nomail.com\",\n        \"pepito\"\n    ],\n    \"n_offers\":10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/misc/get_Musers_Noffers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"misc",
+										"get_Musers_Noffers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get M Offers N Users",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"offers\":[\n        \"Oferta 1\",\n        \"Oferta 2\"\n    ],\n    \"n_users\":2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/misc/get_Moffers_Nusers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"misc",
+										"get_Moffers_Nusers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -91,21 +91,20 @@ class MiscController extends AbstractFOSRestController {
      */
     public function findRecommendedUsersFromOffer(Request $request){
 
+        
         $title    = $request->get('title');
         $n_users = $request->get('n_users');
         
         if (!$title || !$n_users)
-            return $this->sendResponse(400, null, 'Bad request data');
-
-
+        return $this->sendResponse(400, null, 'Bad request data');
+        
+        
         $query = ['title' => $title];
         $offer  = $this->offerRepository->findOneBy($query);
-            
+        
+        
         if (!$offer)
             return $this->sendResponse(204, null, null);
-            
-
-        return $this->getNUsersFromOffer($offer->getId(), $n_users);
         
         $sql  = $this->getSqlQuery('offer', $n_users);
         $conn = $this->em->getConnection();
@@ -260,11 +259,21 @@ class MiscController extends AbstractFOSRestController {
                     SELECT 
                         u.id                                                             as user_id, 
                         o.id                                                             as offer_id, 
-                        if(taa.total_percent >= octa.minimun_percent, 1, 0)              as test_a_criteria,
-                        if(lsa.laboral_sector_id_id = lsoa.laboral_sector_id_id, 1, 0)   as laboral_sector_criteria,
-                        abs(octb.desired_percent_a - tab.percent_answer_a)  + 
-                        abs(octb.desired_percent_b - tab.percent_answer_b)  + 
-                        abs(octb.desired_percent_c - tab.percent_answer_c)               as test_b_criteria,
+                        
+                        if (octa.minimun_percent IS NOT NULL,
+                            if(taa.total_percent >= octa.minimun_percent, 1, 0)
+                            ,1) as test_a_criteria,
+
+                        if(lsoa.laboral_sector_id_id IS NOT NULL,
+                            if(lsa.laboral_sector_id_id = lsoa.laboral_sector_id_id, 1, 0)
+                            ,1)                                                          as laboral_sector_criteria,
+                            
+                        if(octb.desired_percent_a  iS NOT NULL,
+                            (abs(octb.desired_percent_a - tab.percent_answer_a)  + 
+                             abs(octb.desired_percent_b - tab.percent_answer_b)  + 
+                             abs(octb.desired_percent_c - tab.percent_answer_c))
+                            ,0)                                                          as test_b_criteria,
+                        
                         tabla_knowledges.total 								             as knowledge_criteria
                     
                         FROM	       user 					   			as u 
@@ -289,6 +298,7 @@ class MiscController extends AbstractFOSRestController {
                             
                         HAVING  laboral_sector_criteria = 1
                             AND test_a_criteria = 1
+                            AND test_b_criteria IS NOT NULL
                         
                         ORDER BY test_b_criteria ASC,
                                  knowledge_criteria DESC
